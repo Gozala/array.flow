@@ -1,12 +1,12 @@
 {
-  "version": "0.0.0",
-  "name": "array.flow",
+  "version": "0.0.1",
+  "name": "mutable-array.flow",
   "description": "Utilities for working with arrays in flow",
-  "keywords": ["array.flow", "typed", "flow"],
-  "main": "lib/array",
-  "module": "src/array",
+  "keywords": ["mutable-array.flow", "typed", "flow"],
+  "main": "lib/mutable-array",
+  "module": "src/mutable-array",
   "author": "Irakli Gozalishvili <rfobic@gmail.com> (http://jeditoolkit.com)",
-  "repository": "https://github.com/Gozala/array.flow",
+  "repository": "https://github.com/Gozala/mutable-array.flow",
   "license": "MIT",
   "devDependencies": {
     "alias-quokka-plugin": "^0.1.0",
@@ -30,8 +30,8 @@
     "build:clear": "rm -rf lib",
     "build:types": "flow-copy-source --verbose src lib",
     "build:node": "babel --out-dir lib src",
-    "build:umd": "BABEL_ENV=umd rollup -c --files array",
-    "build:api": "documentation readme --section=API src/array.js",
+    "build:umd": "BABEL_ENV=umd rollup -c --files mutable-array",
+    "build:api": "documentation readme --section=API src/mutable-array.js",
     "build:docs":
       "documentation build --document-exported src/** -f html --o docs",
     "build": "npm run build:node && npm run build:types",
@@ -45,7 +45,7 @@
   },
   "quokka": {
     "alias": {
-      "array.flow": "src/array"
+      "mutable-array.flow": "src/mutable-array"
     },
     "pro": true,
     "babel": true,

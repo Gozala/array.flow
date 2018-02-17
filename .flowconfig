@@ -8,6 +8,6 @@
 [include]
 
 [options]
-module.name_mapper='array.flow' -> '<PROJECT_ROOT>/src/array'
+module.name_mapper='mutable-array.flow' -> '<PROJECT_ROOT>/src/mutable-array'
 suppress_comment= \\(.\\|\n\\)*\\@FlowIssue
 suppress_comment= \\(.\\|\n\\)*\\@FlowIgnore
