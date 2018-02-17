@@ -1,0 +1,54 @@
+{
+  "version": "0.0.0",
+  "name": "array.flow",
+  "description": "Utilities for working with arrays in flow",
+  "keywords": ["array.flow", "typed", "flow"],
+  "main": "lib/array",
+  "module": "src/array",
+  "author": "Irakli Gozalishvili <rfobic@gmail.com> (http://jeditoolkit.com)",
+  "repository": "https://github.com/Gozala/array.flow",
+  "license": "MIT",
+  "devDependencies": {
+    "alias-quokka-plugin": "^0.1.0",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "1.6.1",
+    "babel-preset-flow-node": "^2.0.1",
+    "babel-register": "^6.26.0",
+    "blue-tape": "^1.0.0",
+    "documentation": "5.4.0",
+    "flow-bin": "^0.66.0",
+    "flow-copy-source": "^1.2.1",
+    "lint-staged": "^6.0.0",
+    "prettier": "^1.9.2",
+    "rollup": "0.56.1",
+    "rollup.config.flow": "1.0.0"
+  },
+  "scripts": {
+    "test": "npm run test:flow && npm run test:tape",
+    "test:tape": "blue-tape -r babel-register 'test/**/*.js'",
+    "test:flow": "flow check",
+    "build:clear": "rm -rf lib",
+    "build:types": "flow-copy-source --verbose src lib",
+    "build:node": "babel --out-dir lib src",
+    "build:umd": "BABEL_ENV=umd rollup -c --files array",
+    "build:api": "documentation readme --section=API src/array.js",
+    "build:docs":
+      "documentation build --document-exported src/** -f html --o docs",
+    "build": "npm run build:node && npm run build:types",
+    "prepublish": "npm run build && npm run build:umd && npm test",
+    "precommit": "lint-staged",
+    "start":
+      "flow-copy-source --watch --verbose src lib & babel --watch --out-dir lib src"
+  },
+  "lint-staged": {
+    "*.js": ["prettier --parser flow --no-semi --write", "git add"]
+  },
+  "quokka": {
+    "alias": {
+      "array.flow": "src/array"
+    },
+    "pro": true,
+    "babel": true,
+    "plugins": ["alias-quokka-plugin"]
+  }
+}
